@@ -2,7 +2,14 @@ package pokemons;
 
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -14,6 +21,14 @@ public class Pokedatnis {
 				getScaledInstance(Izm1, Izm2, Image.SCALE_SMOOTH));
 	return bilde;
 	}
+	
+	public static void Skana(String skana) throws MalformedURLException, UnsupportedAudioFileException, IOException,LineUnavailableException{
+			File f = new File ("Audijo"+File.separator+skana);
+			AudioInputStream ais = AudioSystem.getAudioInputStream(f.toURI().toURL());
+			Clip c = AudioSystem.getClip();
+			c.open(ais);
+			c.start();
+		}
 	
 	public static void main(String[] args) {
 		
@@ -60,7 +75,22 @@ public class Pokedatnis {
 				}while(izvele!="Akuu");
 				
 			case "Turpini gulēt":
-				JOptionPane.showMessageDialog(null, "Tu iemigi uz visu mūžu", "Labs sapnis", JOptionPane.PLAIN_MESSAGE, Bildes("Gulet.png",150,150));
+				try {
+					Skana("Sapnis.wav");
+				} catch (MalformedURLException e) {
+					
+					e.printStackTrace();
+				} catch (UnsupportedAudioFileException e) {
+					
+					e.printStackTrace();
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				} catch (LineUnavailableException e) {
+					
+					e.printStackTrace();
+				}
+				JOptionPane.showMessageDialog(null, "Tu iemigi uz visu mūžu", "Labs sapnis", JOptionPane.PLAIN_MESSAGE, Bildes("Gulet.jpg",150,150));
 				System. exit(0);
 				break;
 			}
