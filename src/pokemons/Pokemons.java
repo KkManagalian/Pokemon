@@ -11,13 +11,13 @@ public class Pokemons {
 	private int aizsardziba;
 	
 	Pokemons(String Vards, String Trenneris, String Uzbrukums, int Dziviba, int Limenis, int UzbrukumDz, int Aizsardziba){
-		this.setVards(Vards);
-		this.setTrenneris(Trenneris);
-		this.setUzbrukums(Uzbrukums);
-		this.setDziviba(Dziviba);
-		this.setLimenis(Limenis);
-		this.setUzbrukumDz(UzbrukumDz);
-		this.setAizsardziba(Aizsardziba);
+		this.vards=(Vards);
+		this.trenneris=(Trenneris);
+		this.uzbrukums=(Uzbrukums);
+		this.dziviba=(Dziviba);
+		this.limenis=(Limenis);
+		this.uzbrukumDz=(UzbrukumDz);
+		this.aizsardziba=(Aizsardziba);
 	}
 	
 	
@@ -26,45 +26,17 @@ public class Pokemons {
 		return trenneris;
 	}
 
-	public void setTrenneris(String trenneris) {
-		this.trenneris = trenneris;
-	}
-
-
-
 	public String getVards() {
 		return vards;
 	}
-
-	public void setVards(String vards) {
-		this.vards = vards;
-	}
-
-
 
 	public int getDziviba() {
 		return dziviba;
 	}
 
-
-
-	public void setDziviba(int dziviba) {
-		this.dziviba = dziviba;
-	}
-
-
-
 	public String getUzbrukums() {
 		return uzbrukums;
 	}
-
-
-
-	public void setUzbrukums(String uzbrukums) {
-		this.uzbrukums = uzbrukums;
-	}
-
-
 
 	public int getUzbrukumDz() {
 		return uzbrukumDz;
