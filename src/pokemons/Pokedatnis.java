@@ -1,11 +1,12 @@
 package pokemons;
 
+import java.awt.Image;
+import java.io.File;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Pokedatnis {
-
-	bilde = new ImageIcon(new ImageIcon("Atteli"+File.separator+cels).getImage().
-			getScaledInstance(120, 120, Image.SCALE_SMOOTH))
 	
 	public static void main(String[] args) {
 		
@@ -20,7 +21,7 @@ public class Pokedatnis {
 			}
 			switch(izvele) {
 			case "Pamodies":
-				String[] Maja= {"Apskaties datoru","Runāt ar mammu","Pamest māju"};
+				String[] Maja= {"Apskati sevi spoguli", "Apskaties datoru", "Runāt ar mammu", "Pamest māju"};
 				izvele = (String)JOptionPane.showInputDialog(null, "Izvēlies darbību", "Izvēlne", JOptionPane.QUESTION_MESSAGE, null, Maja, Maja[0]);
 				switch(izvele) {
 				case"Apskaties datoru":
@@ -28,7 +29,8 @@ public class Pokedatnis {
 					break;
 				case"Runāt ar mammu":
 					JOptionPane.showMessageDialog(null, "Aij bērniņ, tev šodien paliek 10 gadi!"
-							+ "Skrien nu pie profesora un dabūni savu pirmo pokemonu!",JOptionPane.PLAIN_MESSAGE, bilde);
+							+ "Skrien nu pie profesora un dabūni savu pirmo pokemonu!","Mutere",JOptionPane.PLAIN_MESSAGE, new ImageIcon(new ImageIcon("Atteli"+File.separator+"Mamma.png").getImage().
+									getScaledInstance(120, 120, Image.SCALE_SMOOTH)));
 					break;
 				case"Pamest māju":
 	
