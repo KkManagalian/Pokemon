@@ -1,6 +1,6 @@
 package pokemons;
 
-public class Pokemons {
+public abstract class Pokemons {
 
 	private String vards;
 	private String trenneris;
@@ -10,7 +10,7 @@ public class Pokemons {
 	private int uzbrukumDz;
 	private int aizsardziba;
 	
-	Pokemons(String Vards, String Trenneris, String Uzbrukums, int Dziviba, int Limenis, int UzbrukumDz, int Aizsardziba){
+	public Pokemons(String Vards, String Trenneris, String Uzbrukums, int Dziviba, int Limenis, int UzbrukumDz, int Aizsardziba){
 		this.vards=(Vards);
 		this.trenneris=(Trenneris);
 		this.uzbrukums=(Uzbrukums);
@@ -49,6 +49,9 @@ public class Pokemons {
 	}
 
 
+	public void setDziviba(int dziviba) {
+		this.dziviba = dziviba;
+	}
 
 	public int getLimenis() {
 		return limenis;
@@ -71,5 +74,12 @@ public class Pokemons {
 	public void setAizsardziba(int aizsardziba) {
 		this.aizsardziba = aizsardziba;
 	}
+	
+	public abstract void sakiVardu();
+	
+	public abstract void trenins();
+	
+	public abstract void sanemtSapes(int stiprums);
+	public abstract void uzbrukt(Pokemons pretinieks);
 
 }

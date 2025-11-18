@@ -3,6 +3,8 @@ package pokemons;
 import javax.swing.JOptionPane;
 
 public class Lauks {
+	
+	//Iespējams, šo vajadzēs pārmainīt uz kaut ko citu.
 	public static void CelsUzOzolu() {
 	    int mapSize = 5; 
         int playerX = 0; 

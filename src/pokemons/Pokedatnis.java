@@ -19,10 +19,52 @@ import javax.swing.JOptionPane;
 
 public class Pokedatnis {
 	
-	static ArrayList<Pokedatnis> pokemoni = new ArrayList<>();
+	static ArrayList<Pokemons> pokemoni = new ArrayList<>();
 	
 	private static void izveidotPokemonu() {
+		String[] tipi = {"Elektriskais", "Ūdens"};
 
+	    String tips = (String) JOptionPane.showInputDialog(   null,"Izvēlies sava pokemona tipu:","Profesors Ozols",JOptionPane.PLAIN_MESSAGE,null,tipi,tipi[0]
+	    );
+
+	    if (tips == null) {
+	        JOptionPane.showMessageDialog(null, "Tu atteicies izvēlēties pokemonu.");
+	        return;
+	    }
+
+	    // Pokemona vārds
+	    String vards = virknesParbaude("Kā nosauksi savu pokemonu?", "Pika");
+	    if (vards == null) return;
+
+	    // Uzbrukums
+	    String uzbrukums = virknesParbaude("Kāds ir pokemona uzbrukums?", "Zibens");
+	    if (uzbrukums == null) return;
+
+	    // Statistika
+	    int dziviba = 20 + (int)(Math.random() * 10);
+	    int limenis = 1;
+	    int uzbrukumDz = 5 + (int)(Math.random() * 4);
+	    int aizsardziba = 3 + (int)(Math.random() * 4);
+
+	    Pokemons p = null;
+
+	    // Izveido izvēlētā tipa pokemonu
+	    if (tips.equals("Elektriskais")) {
+
+	        p = new ElektriskaisP(vards,"Spēlētājs",uzbrukums,dziviba,limenis,uzbrukumDz,aizsardziba);
+
+	    } else if (tips.equals("Ūdens")) {
+	        p = new UdensP(vards,"Spēlētājs",uzbrukums, dziviba,limenis,uzbrukumDz,aizsardziba
+	        );
+	    }
+	    pokemoni.add(p);
+
+	    JOptionPane.showMessageDialog(null,"Tavs jaunais pokemons ir gatavs!\n" + "Vārds: " +
+	    p.getVards() +"\nTips: " + tips +"\nDzīvība: " + dziviba + "\nLimenis: " + limenis +"\nUzbrukums: " + uzbrukumDz +
+	                    "\nAizsardzība: " + aizsardziba,
+	            "Prof. Ozols",
+	            JOptionPane.PLAIN_MESSAGE,
+	            null); // piemēram: Elektriskais.png, Ūdens.png
 	}
 	
 	public static Icon Bildes(String fails, int Izm1, int Izm2) {
@@ -64,7 +106,7 @@ public class Pokedatnis {
 			switch(izvele) {
 			case "Pamodies":
 				do {
-				String[] Maja= {"Apskati sevi spogulī", "Apskaties datoru", "Runāt ar mammu", "Pamest māju"};
+				String[] Maja= {"Apskati sevi spogulī", "Apskaties datoru", "Runāt ar mammu", "Pokemoni", "Pamest māju"};
 				izvele = (String)JOptionPane.showInputDialog(null, "Ko darīsi", "Istaba", JOptionPane.PLAIN_MESSAGE, Bildes("Istaba.jpg", 200, 170), Maja, Maja[0]);
 				
 				if(izvele==null) {
@@ -118,6 +160,74 @@ public class Pokedatnis {
 					JOptionPane.showMessageDialog(null, "Aij bērniņ, tev šodien paliek 10 gadi!"
 							+ "\nSkrien nu pie profesora un dabūni savu pirmo pokemonu!","Mutere",JOptionPane.PLAIN_MESSAGE, Bildes("Mamma.png", 150, 150));
 					break;
+					
+				case "Pokemoni":
+					if (pokemoni.isEmpty()) {
+				        JOptionPane.showMessageDialog(null,"Tev taču nav neviena pokemona!","Pokemoni",JOptionPane.WARNING_MESSAGE);
+				        break;
+				    }
+					
+					 String[] pokemonuVardi = new String[pokemoni.size()];
+					    for (int i = 0; i < pokemoni.size(); i++) {
+					        pokemonuVardi[i] = pokemoni.get(i).getVards();
+					    }
+
+					    // Ļauj izvēlēties pokemonu
+					    String izveletsVards = (String) JOptionPane.showInputDialog( null,"Izvēlies savu pokemonu:","Pokemoni",JOptionPane.PLAIN_MESSAGE,null,
+					            pokemonuVardi,
+					            pokemonuVardi[0]
+					    );
+
+					    if (izveletsVards == null) {
+					        break; 
+					    }
+					    // Atrodam izvēlēto pokemonu
+					    Pokemons sobridejais = null;
+					    for (Pokemons p : pokemoni) {
+					        if (p.getVards().equals(izveletsVards)) {
+					        	sobridejais = p;
+					            break;
+					        }
+					    }
+
+					    if (sobridejais == null) {
+					        JOptionPane.showMessageDialog(null, "Pokemons nav atrasts.");
+					        break;
+					    }
+
+					    // Papildus darbības ar pokemonu
+					    String[] darbibas = {"Apskatīt info", "Trenēt", "Pasaki vārdu", "Atcelt"};
+					    String darbiba = (String) JOptionPane.showInputDialog(null, "Ko vēlies darīt ar " + sobridejais.getVards() + "?","Pokemoni",JOptionPane.PLAIN_MESSAGE,null,darbibas,darbibas[0]
+					    );
+
+					    if (darbiba == null || darbiba.equals("Atcelt")) break;
+
+					    switch (darbiba) {
+					        case "Apskatīt info":
+					            JOptionPane.showMessageDialog(null,
+					                "Vārds: " + sobridejais.getVards() +
+					                "\nTips: " + sobridejais.getClass().getSimpleName() +
+					                "\nDzīvība: " + sobridejais.getDziviba() +
+					                "\nLīmenis: " + sobridejais.getLimenis() +
+					                "\nUzbrukums: " + sobridejais.getUzbrukumDz() +
+					                "\nAizsardzība: " + sobridejais.getAizsardziba(),
+					                "Pokemona informācija",
+					                JOptionPane.PLAIN_MESSAGE
+					            );
+					            break;
+
+					        case "Trenēt":
+					        	sobridejais.trenins();
+					            break;
+
+					        case "Say Name":
+					        	sobridejais.sakiVardu();
+					            break;
+					    }
+					    break;
+					    
+					   
+					
 				case"Pamest māju":
 					if(trenners==null) {
 						JOptionPane.showMessageDialog(null, "Es vēl nēesmu sakārtojis savu izskatu!", "Ak jē!", JOptionPane.WARNING_MESSAGE);
