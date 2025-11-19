@@ -1,5 +1,6 @@
 package pokemons;
 
+<<<<<<< HEAD
 import javax.swing.JOptionPane;
 import java.util.Random;
 
@@ -55,3 +56,12 @@ public class ElektriskaisP extends Pokemons {
         }
     }
 }
+=======
+public class ElektriskaisP extends Pokemons {
+
+	ElektriskaisP(String Vards, String Trenneris, String Uzbrukums, int Dziviba, int Limenis, int UzbrukumDz,
+			int Aizsardziba) {
+		super(Vards, Trenneris, Uzbrukums, Dziviba, Limenis, UzbrukumDz, Aizsardziba);
+}
+}
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c

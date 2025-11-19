@@ -1,5 +1,6 @@
 package pokemons;
 
+<<<<<<< HEAD
 import javax.swing.JOptionPane;
 import java.util.Random;
 
@@ -50,4 +51,14 @@ public class UdensP extends Pokemons {
             mercis.setAizsardziba(Math.max(0, mercis.getAizsardziba() - 1));
         }
     }
+=======
+public class UdensP extends Pokemons{
+
+	UdensP(String Vards, String Trenneris, String Uzbrukums, int Dziviba, int Limenis, int UzbrukumDz,
+			int Aizsardziba) {
+		super(Vards, Trenneris, Uzbrukums, Dziviba, Limenis, UzbrukumDz, Aizsardziba);
+		
+	}
+
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 }

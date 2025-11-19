@@ -1,6 +1,10 @@
 package pokemons;
 
+<<<<<<< HEAD
 public abstract class Pokemons {
+=======
+public class Pokemons {
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 
 	private String vards;
 	private String trenneris;
@@ -10,7 +14,11 @@ public abstract class Pokemons {
 	private int uzbrukumDz;
 	private int aizsardziba;
 	
+<<<<<<< HEAD
 	public Pokemons(String Vards, String Trenneris, String Uzbrukums, int Dziviba, int Limenis, int UzbrukumDz, int Aizsardziba){
+=======
+	Pokemons(String Vards, String Trenneris, String Uzbrukums, int Dziviba, int Limenis, int UzbrukumDz, int Aizsardziba){
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 		this.vards=(Vards);
 		this.trenneris=(Trenneris);
 		this.uzbrukums=(Uzbrukums);
@@ -49,9 +57,12 @@ public abstract class Pokemons {
 	}
 
 
+<<<<<<< HEAD
 	public void setDziviba(int dziviba) {
 		this.dziviba = dziviba;
 	}
+=======
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 
 	public int getLimenis() {
 		return limenis;
@@ -74,6 +85,7 @@ public abstract class Pokemons {
 	public void setAizsardziba(int aizsardziba) {
 		this.aizsardziba = aizsardziba;
 	}
+<<<<<<< HEAD
 	
 	public abstract void sakiVardu();
 	
@@ -81,5 +93,7 @@ public abstract class Pokemons {
 	
 	public abstract void sanemtSapes(int stiprums);
 	public abstract void uzbrukt(Pokemons pretinieks);
+=======
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 
 }

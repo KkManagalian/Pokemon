@@ -4,7 +4,10 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 import java.util.regex.Pattern;
 
 import javax.sound.sampled.AudioInputStream;
@@ -16,6 +19,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+<<<<<<< HEAD
 
 public class Pokedatnis {
 	
@@ -67,6 +71,10 @@ public class Pokedatnis {
 	            null); // piemēram: Elektriskais.png, Ūdens.png
 	}
 	
+=======
+public class Pokedatnis {
+	
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 	public static Icon Bildes(String fails, int Izm1, int Izm2) {
 	ImageIcon bilde = new ImageIcon(new ImageIcon("Bildes"+File.separator+fails).getImage().
 				getScaledInstance(Izm1, Izm2, Image.SCALE_SMOOTH));
@@ -106,7 +114,11 @@ public class Pokedatnis {
 			switch(izvele) {
 			case "Pamodies":
 				do {
+<<<<<<< HEAD
 				String[] Maja= {"Apskati sevi spogulī", "Apskaties datoru", "Runāt ar mammu", "Pokemoni", "Pamest māju"};
+=======
+				String[] Maja= {"Apskati sevi spogulī", "Apskaties datoru", "Runāt ar mammu", "Pamest māju"};
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 				izvele = (String)JOptionPane.showInputDialog(null, "Ko darīsi", "Istaba", JOptionPane.PLAIN_MESSAGE, Bildes("Istaba.jpg", 200, 170), Maja, Maja[0]);
 				
 				if(izvele==null) {
@@ -121,6 +133,7 @@ public class Pokedatnis {
 					if(dzimte==null) {
 						break;
 					}
+<<<<<<< HEAD
 					
 					do {
 					vards = (String)JOptionPane.showInputDialog(null, "Kāds bija mans vārds?", "Spogulis", JOptionPane.QUESTION_MESSAGE, null, null, "Pelni");
@@ -139,6 +152,19 @@ public class Pokedatnis {
 					
 					trenners = new Trenneris(vards, dzimte, 0, 0,0,0);
 					
+=======
+					do {
+					vards = (String)JOptionPane.showInputDialog(null, "Kāds bija mans vārds?");
+					if(vards==null) {
+						break;
+					}
+					if(vards.length()>12) {
+						JOptionPane.showMessageDialog(null, "Vārds ir pārāk garš!"+
+															"\nMūsu māte taču mūs mīl..","Spogulis",JOptionPane.ERROR_MESSAGE);
+					}
+					}while(vards.length()>12);
+					trenners = new Trenneris(vards, dzimte, 0, 0,0,0);
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 					break;
 				
 				case"Apskaties datoru":
@@ -160,6 +186,7 @@ public class Pokedatnis {
 					JOptionPane.showMessageDialog(null, "Aij bērniņ, tev šodien paliek 10 gadi!"
 							+ "\nSkrien nu pie profesora un dabūni savu pirmo pokemonu!","Mutere",JOptionPane.PLAIN_MESSAGE, Bildes("Mamma.png", 150, 150));
 					break;
+<<<<<<< HEAD
 					
 				case "Pokemoni":
 					if (pokemoni.isEmpty()) {
@@ -228,13 +255,19 @@ public class Pokedatnis {
 					    
 					   
 					
+=======
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 				case"Pamest māju":
 					if(trenners==null) {
 						JOptionPane.showMessageDialog(null, "Es vēl nēesmu sakārtojis savu izskatu!", "Ak jē!", JOptionPane.WARNING_MESSAGE);
 						break;
 					}
+<<<<<<< HEAD
 					Lauks.CelsUzOzolu();
 					izveidotPokemonu();
+=======
+	
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 					break;
 					
 				case"Akuu":
@@ -265,7 +298,10 @@ public class Pokedatnis {
 		}while(izvele!="Turpini gulēt");
 
 	}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3499c3e911411ddf6f8d3a1f34ea3462200ec93c
 	
 }
