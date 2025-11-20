@@ -174,7 +174,7 @@ public static ArrayList<Pokemons> pokemoni = new ArrayList<>();
 					        	sobridejais.trenins();
 					            break;
 
-					        case "Say Name":
+					        case "Pasaki vārdu":
 					        	sobridejais.sakiVardu();
 					            break;
 					    }

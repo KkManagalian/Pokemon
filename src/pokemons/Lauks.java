@@ -1,5 +1,7 @@
 package pokemons;
 
+import java.util.Random;
+
 import javax.swing.JOptionPane;
 
 public class Lauks {
@@ -42,11 +44,11 @@ public class Lauks {
                 map.append("\n");
             }
 
-            String[] options = {"Augšā", "Lejā", "Pa labi", "Pa kreisi", "Iziet"};
+            String[] options = {"Augšā", "Lejā", "Pa labi", "Pa kreisi"};
             String choice = (String) JOptionPane.showInputDialog( null, "Kur tu ej?\n\n" + map,"Pokémon Staigāšana",JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
 
-            if (choice == null || choice.equals("Iziet")) {
-                JOptionPane.showMessageDialog(null, "Spēle beidzās.");
+            if (choice == null) {
+                JOptionPane.showMessageDialog(null, "Atgriežamies mājās.");
                 break;
             }
 
@@ -60,7 +62,6 @@ public class Lauks {
             if (playerX == oakX && playerY == oakY) {
                 JOptionPane.showMessageDialog(null, "Tu esi pie Profesora Oak mājas!");
                 izveidotPokemonu();
-                
             }
             
             if (playerX == ZaleX && playerY == ZaleY) {
@@ -91,11 +92,11 @@ public class Lauks {
 	        return;
 	    }
 
-	    // Pokemona vārds
-	    String vards = Pokedatnis.virknesParbaude("Kā nosauksi savu pokemonu?", "Pika");
+
+	    String vards = Pokedatnis.virknesParbaude("Kā nosauksi savu pokemonu?", "Jānis");
 	    if (vards == null) return;
 
-	    // Statistika
+
 	    int dziviba = 20 + (int)(Math.random() * 10)+1;
 	    int limenis = 1;
 	    int uzbrukumDz = 5 + (int)(Math.random() * 4)+1;
@@ -103,7 +104,7 @@ public class Lauks {
 
 	    Pokemons p = null;
 
-	    // Izveido izvēlētā tipa pokemonu
+
 	    if (tips.equals("Elektriskais")) {
 
 	        p = new ElektriskaisP(vards,"Spēlētājs","Zibens",dziviba,limenis,uzbrukumDz,aizsardziba);
@@ -130,29 +131,193 @@ public class Lauks {
 	}
 
 	static void ZalaZale() {
-		
-		int Pokebrucejs = (int)(Math.random()*3)+1;
-		
-		switch(Pokebrucejs) {
-		
-		case 1:
-			 JOptionPane.showMessageDialog(null,"Tev uzbruka nepieradināta žurka!"+"\nVārds:Ratata"+"\nLīmenis:"+((int)(Math.random()*6)+1), "Uzbrukums!", JOptionPane.PLAIN_MESSAGE, Pokedatnis.Bildes("Ratata.png", 200, 200));
-			 Cinisanas("Ratata", (int)(Math.random()*12)+6,(int)(Math.random()*8)+4,(int)(Math.random()*8)+8);
-			break;
-		case 2:
-			 JOptionPane.showMessageDialog(null,"Tev uzbruka nepieradināts putns!"+"\nVārds:Pidžijs"+"\nLīmenis:"+((int)(Math.random()*6)+1), "Uzbrukums!", JOptionPane.PLAIN_MESSAGE, Pokedatnis.Bildes("Pidgey.png", 200, 200));
-			 Cinisanas("Pidžijs", (int)(Math.random()*12)+6,(int)(Math.random()*8)+8,(int)(Math.random()*8)+4);
-			break;
-		case 3:
-			 JOptionPane.showMessageDialog(null,"Tev uzbruka nepieradināta kukainis!"+"\nVārds:Vīdls"+"\nLīmenis:"+((int)(Math.random()*6)+1), "Uzbrukums!", JOptionPane.PLAIN_MESSAGE, Pokedatnis.Bildes("Weedle.png", 200, 200));
-			 Cinisanas("Vīdls", (int)(Math.random()*12)+6,(int)(Math.random()*8)+6,(int)(Math.random()*8)+6);
-			break;
-		}
-		
+	    
+	    int rand = (int)(Math.random() * 3) + 1;
+	    Pokemons pretinieks = null;
+
+	    switch (rand) {
+
+	        case 1:
+	            JOptionPane.showMessageDialog(null,"Tev uzbruka nepieradināta žurka!","Uzbrukums!",JOptionPane.PLAIN_MESSAGE,Pokedatnis.Bildes("Ratata.png", 200, 200));
+     
+	            pretinieks = new SavvalasPokemons("Ratata",(int)(Math.random()*12) + 6,
+	            		(int)(Math.random()*6) + 1,(int)(Math.random()*8) + 4,(int)(Math.random()*8) + 8);
+	            break;
+
+	        case 2:
+	            JOptionPane.showMessageDialog(null,"Tev uzbruka nepieradināts putns!","Uzbrukums!",JOptionPane.PLAIN_MESSAGE,Pokedatnis.Bildes("Pidgey.png", 200, 200)
+	            );
+
+	            pretinieks = new SavvalasPokemons("Pidgey",(int)(Math.random()*12) + 6,
+	            		(int)(Math.random()*6) + 1,(int)(Math.random()*8) + 8,(int)(Math.random()*8) + 4);
+	            break;
+
+	        case 3:
+	            JOptionPane.showMessageDialog(null, "Tev uzbruka nepieradināts kukainis!","Uzbrukums!",JOptionPane.PLAIN_MESSAGE,Pokedatnis.Bildes("Weedle.png", 200, 200));
+
+	            pretinieks = new SavvalasPokemons("Weedle",(int)(Math.random()*12) + 6,(int)(Math.random()*6) + 1,
+	            		(int)(Math.random()*8) + 6,(int)(Math.random()*8) + 6);
+	            break;
+
+	        default:
+	            System.out.println("Kā mēs šeit tikām?");
+	            break;
+	    }
+
+	    Cinisanas(pretinieks);
 	}
-	
-	static void Cinisanas(String pokemons, int Hp, int Atk, int Def){
-		
+
+
+
+	static void Cinisanas(Pokemons pretinieks) {
+
+	    Pokemons player = Pokedatnis.pokemoni.get(0);
+	    Random rand = new Random();
+
+
+	    int maxHP = player.getDziviba();
+
+	    while (player.getDziviba() > 0 && pretinieks.getDziviba() > 0) {
+
+	        String info =
+	                "=== TAVS POKEMONS ===\n" +
+	                "Vārds: " + player.getVards() +
+	                "\nDzīvība: " + player.getDziviba() + "/" + maxHP +
+	                "\nUzbrukums: " + player.getUzbrukumDz() +
+	                "\nAizsardzība: " + player.getAizsardziba() +
+	                "\n\n=== PRETINIEKS ===\n" +
+	                "Vārds: " + pretinieks.getVards() +
+	                "\nDzīvība: " + pretinieks.getDziviba() +
+	                "\nUzbrukums: " + pretinieks.getUzbrukumDz() +
+	                "\nAizsardzība: " + pretinieks.getAizsardziba();
+
+	        String[] izveles = {"Uzbrukt", "Dziedēt", "Izvairīties", "Bēgt"};
+	        String izvele = (String) JOptionPane.showInputDialog(null, info + "\n\nKo tu vēlies darīt?","Cīņa",JOptionPane.PLAIN_MESSAGE,null,izveles,izveles[0]
+	        );
+
+	        if (izvele == null || izvele.equals("Bēgt")) {
+	            JOptionPane.showMessageDialog(null, "Tu aizbēgi no cīņas!");
+	            return;
+	        }
+
+	     
+	        if (izvele.equals("Uzbrukt")) {
+
+	            int uzbrukums = Math.max(1, player.getUzbrukumDz() - pretinieks.getAizsardziba());
+	            uzbrukums = (int)(uzbrukums * (0.7 + rand.nextDouble() * 0.6)); // random variācija
+
+	            boolean kritisks = rand.nextInt(100) < 10;
+	            if (kritisks) {
+	            	uzbrukums *= 2;
+	                JOptionPane.showMessageDialog(null, "KRITISKS TRĀPIJUMS! 💥");
+	            }
+
+	            boolean garam = rand.nextInt(100) < 7;
+	            if (garam) {
+	            	uzbrukums = 0;
+	                JOptionPane.showMessageDialog(null, "Tu aizšāvi garām! 💨");
+	            }
+
+	            pretinieks.setDziviba(pretinieks.getDziviba() - uzbrukums);
+
+	            if (pretinieks.getDziviba() <= 0) {
+	                JOptionPane.showMessageDialog(null, "Tu nodarīji " + uzbrukums + " bojājumus.\nPretinieks tika sakauts!");
+	                return;
+	            }
+
+	            // Pretinieka pretuzbrukums
+	            int pretUzbruk = Math.max(1, pretinieks.getUzbrukumDz() - player.getAizsardziba());
+	            pretUzbruk = (int)(pretUzbruk * (0.7 + rand.nextDouble() * 0.6));
+
+	            boolean pretKrit = rand.nextInt(100) < 10;
+	            if (pretKrit) {
+	            	pretUzbruk *= 2;
+	                JOptionPane.showMessageDialog(null, "Pretinieks izdarīja kritisku triecienu!");
+	            }
+
+	            boolean pretIzvairit = rand.nextInt(100) < 7;
+	            if (pretIzvairit) {
+	            	pretUzbruk = 0;
+	                JOptionPane.showMessageDialog(null, "Pretinieks aizšāva garām!");
+	            }
+
+	            player.setDziviba(player.getDziviba() - pretUzbruk);
+
+	            JOptionPane.showMessageDialog(null,
+	                    "Tu nodarīji " + uzbrukums + " bojājumus.\nPretinieks nodarīja " + pretUzbruk + " bojājumus."
+	            );
+
+	        }
+
+	      
+	        if (izvele.equals("Dziedēt")) {
+
+	            int dziedet = 10 + rand.nextInt(16); // Nepieciešams uzlabot, lai ir zemāks
+
+	            player.setDziviba(Math.min(maxHP, player.getDziviba() + dziedet));
+
+	            JOptionPane.showMessageDialog(null, "Tu atguvi " + dziedet + " dzīvības punktus! ❤️");
+
+	            
+	            int pretUzbruk = Math.max(1, pretinieks.getUzbrukumDz() - player.getAizsardziba());
+	            pretUzbruk = (int)(pretUzbruk * (0.7 + rand.nextDouble() * 0.6));
+
+	            boolean pretKrit = rand.nextInt(100) < 10;
+	            if (pretKrit) {
+	            	pretUzbruk *= 2;
+	                JOptionPane.showMessageDialog(null, "Pretinieks izdarīja kritisku triecienu! 💥");
+	            }
+
+	            boolean pretIzvairities = rand.nextInt(100) < 7;
+	            if (pretIzvairities) {
+	            	pretUzbruk = 0;
+	                JOptionPane.showMessageDialog(null, "Pretinieks aizšāva garām! 💨");
+	            }
+
+	            player.setDziviba(player.getDziviba() - pretUzbruk);
+
+	            JOptionPane.showMessageDialog(null, "Pretinieks uzbruka un nodarīja " + pretUzbruk + " bojājumus.");
+	        }
+
+	      
+	        if (izvele.equals("Izvairīties")) {
+
+	            boolean veiksmigi = rand.nextInt(100) < 20; 
+
+	            if (veiksmigi) {
+	                JOptionPane.showMessageDialog(null, "Tu veiksmīgi izvairījies no uzbrukuma! 🌀");
+	            } else {
+
+	                JOptionPane.showMessageDialog(null, "Neizdevās izvairīties...");
+
+	                int pretUzbruk = Math.max(1, pretinieks.getUzbrukumDz() - player.getAizsardziba());
+	                pretUzbruk = (int)(pretUzbruk * (0.7 + rand.nextDouble() * 0.6));
+
+	                boolean pretKrit = rand.nextInt(100) < 10;
+	                if (pretKrit) {
+	                    pretUzbruk *= 2;
+	                    JOptionPane.showMessageDialog(null, "Pretinieks izdarīja kritisku triecienu! 💥");
+	                }
+
+	                boolean pretIzvairit = rand.nextInt(100) < 7;
+	                if (pretIzvairit) {
+	                    pretUzbruk = 0;
+	                    JOptionPane.showMessageDialog(null, "Pretinieks aizšāva garām! 💨");
+	                }
+
+	                player.setDziviba(player.getDziviba() - pretUzbruk);
+
+	                JOptionPane.showMessageDialog(null,
+	                        "Pretinieks nodarīja " + pretUzbruk + " bojājumus."
+	                );
+	            }
+	        }
+
+	        
+	        if (player.getDziviba() <= 0) {
+	            JOptionPane.showMessageDialog(null, "Tavs pokemons tika sakauts!");
+	            return;
+	        }
+	    }
 	}
-	
 }
