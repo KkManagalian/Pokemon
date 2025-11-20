@@ -1,7 +1,11 @@
 package pokemons;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Random;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 public class Lauks {
@@ -104,10 +108,41 @@ public class Lauks {
 
 	    Pokemons p = null;
 
+	    try {
+			Pokedatnis.Skana("Ieguts.wav");
+		} catch (MalformedURLException e) {
+			
+			e.printStackTrace();
+		} catch (UnsupportedAudioFileException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			
+			e.printStackTrace();
+		}
 
 	    if (tips.equals("Elektriskais")) {
 
 	        p = new ElektriskaisP(vards,"Spēlētājs","Zibens",dziviba,limenis,uzbrukumDz,aizsardziba);
+	        
+	        try {
+				Pokedatnis.Skana("Pikachu.wav");
+			} catch (MalformedURLException e) {
+				
+				e.printStackTrace();
+			} catch (UnsupportedAudioFileException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				
+				e.printStackTrace();
+			}
 	        
 	        Pokedatnis.pokemoni.add(p);
 		    JOptionPane.showMessageDialog(null,"Tavs jaunais pokemons ir gatavs!\n" + "Vārds: " +
@@ -119,6 +154,22 @@ public class Lauks {
 	        
 	    } else if (tips.equals("Ūdens")) {
 	        p = new UdensP(vards,"Spēlētājs","Burbuļi", dziviba,limenis,uzbrukumDz,aizsardziba);
+	        
+	        try {
+				Pokedatnis.Skana("Squirtle.wav");
+			} catch (MalformedURLException e) {
+				
+				e.printStackTrace();
+			} catch (UnsupportedAudioFileException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				
+				e.printStackTrace();
+			}
 	        		
 	        Pokedatnis.pokemoni.add(p);
 		    JOptionPane.showMessageDialog(null,"Tavs jaunais pokemons ir gatavs!\n" + "Vārds: " +
@@ -138,6 +189,23 @@ public class Lauks {
 	    switch (rand) {
 
 	        case 1:
+	        	
+	        	 try {
+	     			Pokedatnis.Skana("Rattata.wav");
+	     		} catch (MalformedURLException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (UnsupportedAudioFileException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (IOException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (LineUnavailableException e) {
+	     			
+	     			e.printStackTrace();
+	     		}
+	        	
 	            JOptionPane.showMessageDialog(null,"Tev uzbruka nepieradināta žurka!","Uzbrukums!",JOptionPane.PLAIN_MESSAGE,Pokedatnis.Bildes("Ratata.png", 200, 200));
      
 	            pretinieks = new SavvalasPokemons("Ratata",(int)(Math.random()*12) + 6,
@@ -145,6 +213,23 @@ public class Lauks {
 	            break;
 
 	        case 2:
+	        	
+	        	 try {
+	     			Pokedatnis.Skana("Pidgey.wav");
+	     		} catch (MalformedURLException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (UnsupportedAudioFileException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (IOException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (LineUnavailableException e) {
+	     			
+	     			e.printStackTrace();
+	     		}
+	        	
 	            JOptionPane.showMessageDialog(null,"Tev uzbruka nepieradināts putns!","Uzbrukums!",JOptionPane.PLAIN_MESSAGE,Pokedatnis.Bildes("Pidgey.png", 200, 200)
 	            );
 
@@ -153,6 +238,23 @@ public class Lauks {
 	            break;
 
 	        case 3:
+	        	
+	        	 try {
+	     			Pokedatnis.Skana("Weedle.wav");
+	     		} catch (MalformedURLException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (UnsupportedAudioFileException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (IOException e) {
+	     			
+	     			e.printStackTrace();
+	     		} catch (LineUnavailableException e) {
+	     			
+	     			e.printStackTrace();
+	     		}
+	        	
 	            JOptionPane.showMessageDialog(null, "Tev uzbruka nepieradināts kukainis!","Uzbrukums!",JOptionPane.PLAIN_MESSAGE,Pokedatnis.Bildes("Weedle.png", 200, 200));
 
 	            pretinieks = new SavvalasPokemons("Weedle",(int)(Math.random()*12) + 6,(int)(Math.random()*6) + 1,
@@ -174,10 +276,27 @@ public class Lauks {
 	    Pokemons player = Pokedatnis.pokemoni.get(0);
 	    Random rand = new Random();
 
+	    
 
 	    int maxHP = player.getDziviba();
 
 	    while (player.getDziviba() > 0 && pretinieks.getDziviba() > 0) {
+	    	
+	    	 try {
+	 			Pokedatnis.Skana("Cina.wav");
+	 		} catch (MalformedURLException e) {
+	 			
+	 			e.printStackTrace();
+	 		} catch (UnsupportedAudioFileException e) {
+	 			
+	 			e.printStackTrace();
+	 		} catch (IOException e) {
+	 			
+	 			e.printStackTrace();
+	 		} catch (LineUnavailableException e) {
+	 			
+	 			e.printStackTrace();
+	 		}
 
 	        String info =
 	                "=== TAVS POKEMONS ===\n" +

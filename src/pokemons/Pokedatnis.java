@@ -52,6 +52,23 @@ public static ArrayList<Pokemons> pokemoni = new ArrayList<>();
 		Trenneris trenners = null;
 		
 		do {
+			
+			try {
+				Skana("Skana.wav");
+			} catch (MalformedURLException e) {
+				
+				e.printStackTrace();
+			} catch (UnsupportedAudioFileException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				
+				e.printStackTrace();
+			}
+			
 			izvele = (String)JOptionPane.showInputDialog(null, "Aija žužu", "Gulta", JOptionPane.INFORMATION_MESSAGE, Bildes("Gulet.png", 200, 170), gulta, gulta[0]);
 			if(izvele == null) {
 				izvele="Turpini gulēt";
@@ -59,6 +76,23 @@ public static ArrayList<Pokemons> pokemoni = new ArrayList<>();
 			switch(izvele) {
 			case "Pamodies":
 				do {
+					
+					try {
+						Skana("Majas.wav");
+					} catch (MalformedURLException e) {
+						
+						e.printStackTrace();
+					} catch (UnsupportedAudioFileException e) {
+						
+						e.printStackTrace();
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					} catch (LineUnavailableException e) {
+						
+						e.printStackTrace();
+					}
+					
 				String[] Maja= {"Apskati sevi spogulī", "Apskaties datoru", "Runāt ar mammu", "Pokemoni", "Pamest māju"};
 				izvele = (String)JOptionPane.showInputDialog(null, "Ko darīsi", "Istaba", JOptionPane.PLAIN_MESSAGE, Bildes("Istaba.jpg", 200, 170), Maja, Maja[0]);
 				
@@ -111,6 +145,23 @@ public static ArrayList<Pokemons> pokemoni = new ArrayList<>();
 						JOptionPane.showMessageDialog(null, "Es vēl nēesmu sakārtojis savu izskatu!", "Ak jē!", JOptionPane.WARNING_MESSAGE);
 						break;
 					}
+					
+					try {
+						Skana("Mamma.wav");
+					} catch (MalformedURLException e) {
+						
+						e.printStackTrace();
+					} catch (UnsupportedAudioFileException e) {
+						
+						e.printStackTrace();
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					} catch (LineUnavailableException e) {
+						
+						e.printStackTrace();
+					}
+					
 					JOptionPane.showMessageDialog(null, "Aij bērniņ, tev šodien paliek 10 gadi!"
 							+ "\nSkrien nu pie profesora un dabūni savu pirmo pokemonu!","Mutere",JOptionPane.PLAIN_MESSAGE, Bildes("Mamma.png", 150, 150));
 					break;
@@ -186,6 +237,22 @@ public static ArrayList<Pokemons> pokemoni = new ArrayList<>();
 						break;
 					}
 
+					try {
+						Skana("Map-music.wav");
+					} catch (MalformedURLException e) {
+						
+						e.printStackTrace();
+					} catch (UnsupportedAudioFileException e) {
+						
+						e.printStackTrace();
+					} catch (IOException e) {
+						
+						e.printStackTrace();
+					} catch (LineUnavailableException e) {
+						
+						e.printStackTrace();
+					}
+					
 					Lauks.CelsUzOzolu();
 					
 
