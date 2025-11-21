@@ -1,4 +1,4 @@
-package pokemons;
+package baltgalvis_voitkevics;
 
 public class Trenneris {
 
@@ -9,7 +9,7 @@ public class Trenneris {
 	private int pokemoniRedzeti;
 	private int uzvaras;
 	
-	Trenneris(String Vards, String Dzimums,int PokeNauda, int Pokemoni,int PokemoniRedzeti, int Uzvaras){
+	public Trenneris(String Vards, String Dzimums,int PokeNauda, int Pokemoni,int PokemoniRedzeti, int Uzvaras){
 	this.vards=(Vards);
 	this.dzimums=(Dzimums);
 	this.setPokeNauda(PokeNauda);

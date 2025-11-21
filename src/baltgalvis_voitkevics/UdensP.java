@@ -1,4 +1,4 @@
-package pokemons;
+package baltgalvis_voitkevics;
 
 import javax.swing.JOptionPane;
 import java.util.Random;
@@ -39,15 +39,15 @@ public class UdensP extends Pokemons {
     }
 
     @Override
-    public void uzbrukt(Pokemons mercis) {
+    public void uzbrukt(Pokemons pretinieks) {
         int stiprums = getUzbrukumDz();
-        mercis.sanemtSapes(stiprums);
+        pretinieks.sanemtSapes(stiprums);
 
         // 20% iespēja pielietot viļņu uzbrukumu
         if (rand.nextInt(100) < 20) {
             JOptionPane.showMessageDialog(null, 
                     getVards() + " uzmeta ūdens vilni! Aizsardzība pretiniekam samazinās!");
-            mercis.setAizsardziba(Math.max(0, mercis.getAizsardziba() - 1));
+            pretinieks.setAizsardziba(Math.max(0, pretinieks.getAizsardziba() - 5));
         }
     }
 }

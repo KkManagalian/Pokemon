@@ -1,4 +1,4 @@
-package pokemons;
+package baltgalvis_voitkevics;
 
 import java.awt.Image;
 import java.io.File;
@@ -19,6 +19,9 @@ import javax.swing.JOptionPane;
 public class Pokedatnis {
 	
 public static ArrayList<Pokemons> pokemoni = new ArrayList<>();
+
+	public static Trenneris treneris;
+
 	
 	public static Icon Bildes(String fails, int Izm1, int Izm2) {
 	ImageIcon bilde = new ImageIcon(new ImageIcon("Bildes"+File.separator+fails).getImage().
@@ -177,16 +180,12 @@ public static ArrayList<Pokemons> pokemoni = new ArrayList<>();
 					        pokemonuVardi[i] = pokemoni.get(i).getVards();
 					    }
 
-					    // Ļauj izvēlēties pokemonu
-					    String izveletsVards = (String) JOptionPane.showInputDialog( null,"Izvēlies savu pokemonu:","Pokemoni",JOptionPane.PLAIN_MESSAGE,null,
-					            pokemonuVardi,
-					            pokemonuVardi[0]
+					    String izveletsVards = (String) JOptionPane.showInputDialog( null,"Izvēlies savu pokemonu:","Pokemoni",JOptionPane.PLAIN_MESSAGE,null, pokemonuVardi,pokemonuVardi[0]
 					    );
 
 					    if (izveletsVards == null) {
 					        break; 
 					    }
-					    // Atrodam izvēlēto pokemonu
 					    Pokemons sobridejais = null;
 					    for (Pokemons p : pokemoni) {
 					        if (p.getVards().equals(izveletsVards)) {
@@ -200,7 +199,6 @@ public static ArrayList<Pokemons> pokemoni = new ArrayList<>();
 					        break;
 					    }
 
-					    // Papildus darbības ar pokemonu
 					    String[] darbibas = {"Apskatīt info", "Trenēt", "Pasaki vārdu", "Atcelt"};
 					    String darbiba = (String) JOptionPane.showInputDialog(null, "Ko vēlies darīt ar " + sobridejais.getVards() + "?","Pokemoni",JOptionPane.PLAIN_MESSAGE,null,darbibas,darbibas[0]
 					    );

@@ -1,4 +1,4 @@
-package pokemons;
+package baltgalvis_voitkevics;
 
 import javax.swing.JOptionPane;
 import java.util.Random;
@@ -32,26 +32,21 @@ public class ElektriskaisP extends Pokemons {
 
     @Override
     public void sanemtSapes(int stiprums) {
-        int dzivibaPazemina = Math.max(stiprums - getAizsardziba(), 0);
+        int dzivibaPazemina = stiprums;
         setDziviba(getDziviba() - dzivibaPazemina);
         JOptionPane.showMessageDialog(null,
                 getVards() + " saņēma " + dzivibaPazemina + " sāpju!\nDzīvība tagad: " + getDziviba());
     }
 
-//    @Override
-//    public void specialUzbrukums() {
-//        JOptionPane.showMessageDialog(null, getVards() + " met zibens!");
-//    }
-
     @Override
-    public void uzbrukt(Pokemons mercis) {
+    public void uzbrukt(Pokemons pretinieks) {
         int stiprums = getUzbrukumDz();
-        mercis.sanemtSapes(stiprums);
+        pretinieks.sanemtSapes(stiprums);
 
-        // 30% iespēja paralizēt
+        // 30% iespēja paralizēt pretinieku
         if (rand.nextInt(100) < 30) {
-            JOptionPane.showMessageDialog(null, mercis.getVards() + " ir paralizēts! Nākamajā kārtā nevar kustēties!");
-            // Šeit vari pievienot statusa efektu, piemēram, boolean paralize = true;
+        	pretinieks.setParalizets(true);
+            JOptionPane.showMessageDialog(null, pretinieks.getVards() + " ir paralizēts! \nNākamajā kārtā nevarēs kustēties!");
         }
     }
 }

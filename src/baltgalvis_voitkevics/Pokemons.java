@@ -1,4 +1,4 @@
-package pokemons;
+package baltgalvis_voitkevics;
 
 public abstract class Pokemons {
 
@@ -9,6 +9,7 @@ public abstract class Pokemons {
 	private int limenis;
 	private int uzbrukumDz;
 	private int aizsardziba;
+	private boolean irParalizets;
 	
 	public Pokemons(String Vards, String Trenneris, String Uzbrukums, int Dziviba, int Limenis, int UzbrukumDz, int Aizsardziba){
 		this.vards=(Vards);
@@ -18,6 +19,7 @@ public abstract class Pokemons {
 		this.limenis=(Limenis);
 		this.uzbrukumDz=(UzbrukumDz);
 		this.aizsardziba=(Aizsardziba);
+		this.irParalizets = false;
 	}
 	
 	public String getTrenneris() {
@@ -62,6 +64,14 @@ public abstract class Pokemons {
 
 	public void setAizsardziba(int aizsardziba) {
 		this.aizsardziba = aizsardziba;
+	}
+	
+	public boolean irParalizets() {
+		return irParalizets;
+	}
+
+	public void setParalizets(boolean paralizets) {
+		this.irParalizets = paralizets;
 	}
 	
 	public abstract void sakiVardu();

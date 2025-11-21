@@ -1,4 +1,4 @@
-package pokemons;
+package baltgalvis_voitkevics;
 
 public class SavvalasPokemons extends Pokemons {
 
