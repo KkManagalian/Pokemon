@@ -1,7 +1,8 @@
 package baltgalvis_voitkevics;
 
-import javax.swing.JOptionPane;
 import java.util.Random;
+
+import javax.swing.JOptionPane;
 
 public class ElektriskaisP extends Pokemons {
 
@@ -32,10 +33,11 @@ public class ElektriskaisP extends Pokemons {
 
     @Override
     public void sanemtSapes(int stiprums) {
-        int dzivibaPazemina = stiprums;
-        setDziviba(getDziviba() - dzivibaPazemina);
-        JOptionPane.showMessageDialog(null,
-                getVards() + " saņēma " + dzivibaPazemina + " sāpju!\nDzīvība tagad: " + getDziviba());
+    
+        int sapes = (int)(stiprums * 0.5 + (stiprums * 0.5 * (1 - getAizsardziba() / 100.0)));
+        sapes = Math.max(sapes, 1); 
+        setDziviba(getDziviba() - sapes);
+        JOptionPane.showMessageDialog(null,getVards() + " saņēma " + sapes + " bojājumus!\nDzīvība tagad: " + getDziviba());
     }
 
     @Override

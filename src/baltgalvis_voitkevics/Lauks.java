@@ -10,6 +10,12 @@ import javax.swing.JOptionPane;
 
 public class Lauks {
 	
+	static Trenneris trenneris;
+	
+	public static void setTrenneris(Trenneris t) { 
+		trenneris = t;
+	}
+	
 	//Iespējams, šo vajadzēs pārmainīt uz kaut ko citu.
 	public static void CelsUzOzolu() {
 	    int mapSize = 5;
@@ -277,11 +283,8 @@ public class Lauks {
 
 	    int maxHP = speletajs.getDziviba();
 
-
 	    while (speletajs.getDziviba() > 0 && pretinieks.getDziviba() > 0) {
-	    	
-	    	
-	    	
+	        
 	        try {
 	            Pokedatnis.Skana("Cina.wav");
 	        } catch (Exception e) {
@@ -309,18 +312,15 @@ public class Lauks {
 	            return;
 	        }
 
+	        
+	        
+	        
+	        
 	        if (izvele.equals("Uzbrukt")) {
 	            int sakumUzbrukums = speletajs.getUzbrukumDz();
 	            int min = (int)(sakumUzbrukums * 0.5);
 	            int max = sakumUzbrukums; 
 	            int uzbrukums = rand.nextInt(max - min + 1) + min;
-
-	            int pretiniekaAizsardziba = pretinieks.getAizsardziba();
-	            int aizsardzibasMin = (int)(pretiniekaAizsardziba * 0.5);
-	            int aizsardzibasMax = pretiniekaAizsardziba;
-	            int aizsardzibasV = rand.nextInt(aizsardzibasMax - aizsardzibasMin + 1) + aizsardzibasMin;
-
-	            uzbrukums = Math.max(1, uzbrukums - aizsardzibasV);
 
 	            boolean kritisks = rand.nextInt(100) < 10;
 	            if (kritisks) {
@@ -334,17 +334,10 @@ public class Lauks {
 	                JOptionPane.showMessageDialog(null, "Tu aizšāvi garām!");
 	            }
 
-	            pretinieks.setDziviba(pretinieks.getDziviba() - uzbrukums);
-	            
-	            JOptionPane.showMessageDialog(null, "Tu nodarīji " + uzbrukums + " bojājumus.");
-
-	            if (!garam) {
-	                speletajs.uzbrukt(pretinieks);
-	            }
+	            pretinieks.sanemtSapes(uzbrukums);
 
 	            if (pretinieks.getDziviba() <= 0) {
 	                JOptionPane.showMessageDialog(null, pretinieks.getVards() + " tika sakauts!");
-	                Pokedatnis.treneris.setUzvaras(Pokedatnis.treneris.getUzvaras() + 1);
 	                return;
 	            }
 	        }
@@ -365,13 +358,10 @@ public class Lauks {
 	        }
 
 	        if (pretinieks.irParalizets()) {
-	            JOptionPane.showMessageDialog(null, pretinieks.getVards() + " ir paralizēts un nevar uzbrukt! ⚡");
 	            pretinieks.setParalizets(false); 
 	        } else {
-	       
-	        	
 	            if (!izvele.equals("Izvairīties") || rand.nextInt(100) >= 20) {
-	                int pretUzbruk = Math.max(1, pretinieks.getUzbrukumDz() - speletajs.getAizsardziba());
+	                int pretUzbruk = pretinieks.getUzbrukumDz();
 	                pretUzbruk = (int)(pretUzbruk * (0.7 + rand.nextDouble() * 0.6));
 
 	                boolean pretKrit = rand.nextInt(100) < 10;
@@ -386,9 +376,7 @@ public class Lauks {
 	                    JOptionPane.showMessageDialog(null, "Pretinieks aizšāva garām!");
 	                }
 
-	                speletajs.setDziviba(speletajs.getDziviba() - pretUzbruk);
-
-	                JOptionPane.showMessageDialog(null, "Pretinieks uzbruka un nodarīja " + pretUzbruk + " bojājumus.");
+	                speletajs.sanemtSapes(pretUzbruk);
 	            }
 	        }
 

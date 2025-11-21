@@ -32,12 +32,11 @@ public class UdensP extends Pokemons {
 
     @Override
     public void sanemtSapes(int stiprums) {
-        int dmg = Math.max(stiprums - getAizsardziba(), 0);
-        setDziviba(getDziviba() - dmg);
-        JOptionPane.showMessageDialog(null,
-                getVards() + " saņēma " + dmg + " sāpju!\nDzīvība tagad: " + getDziviba());
+        int sapes = (int)(stiprums * 0.5 + (stiprums * 0.5 * (1 - getAizsardziba() / 100.0)));
+        sapes = Math.max(sapes, 1); 
+        setDziviba(getDziviba() - sapes);
+        JOptionPane.showMessageDialog(null,getVards() + " saņēma " + sapes + " bojājumus!\nDzīvība tagad: " + getDziviba());
     }
-
     @Override
     public void uzbrukt(Pokemons pretinieks) {
         int stiprums = getUzbrukumDz();
